@@ -1,0 +1,29 @@
+{
+  "name": "beer-flix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint src",
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katherineortega/beer-flix.git"
+  },
+  "keywords": [],
+  "author": "Katherine Ortega",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/katherineortega/beer-flix/issues"
+  },
+  "homepage": "https://github.com/katherineortega/beer-flix#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^1.0.1",
+    "eslint": "^5.14.1",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3"
+  }
+}
