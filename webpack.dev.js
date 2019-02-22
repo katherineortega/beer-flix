@@ -1,6 +1,6 @@
 const common = require('./webpack.common.js');
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
@@ -14,8 +14,24 @@ module.exports = {
 		filename: '[name].bundle.js',
 		path: path.join(__dirname, 'dist')
 	},
+	module: {
+		rules: [
+			{
+				test: /\.html$/,
+				use: [
+					{
+						loader: 'html-loader',
+						options: {minimize: true}
+					}
+				]
+			}
+		]
+	},
 	plugins: [
-		new CleanWebpackPlugin(['dist']),
+		new HtmlWebpackPlugin({
+			filename: 'index.html',
+			template: path.join(__dirname, 'src', 'index.html')
+		})
 	],
 	devServer: {
 		open: true,

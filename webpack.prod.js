@@ -1,7 +1,7 @@
 const common = require('./webpack.common.js');
 const path = require('path');
 const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	...common,
@@ -11,8 +11,29 @@ module.exports = {
 		filename: 'bundle-[hash].js',
 		path: path.join(__dirname, 'dist')
 	},
+	module: {
+		rules: [
+			{
+				test: /\.html$/,
+				use: [
+					{
+						loader: 'html-loader',
+						options: {minimize: true}
+					}
+				]
+			}
+		]
+	},
 	plugins: [
 		new webpack.ProgressPlugin(),
-		new CleanWebpackPlugin(['dist']),
+		new webpack.HotModuleReplacementPlugin(),
+		new HtmlWebpackPlugin({
+			filename: 'index.html',
+			template: path.join(__dirname, 'src', 'index.html'),
+			minify: {
+				collapseWhitespace: true,
+				removeComments: true
+			}
+		}),
 	]
 };
