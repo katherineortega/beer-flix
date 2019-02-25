@@ -1,39 +1,32 @@
+const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
-const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = {
-	...common,
+module.exports = merge(common, {
 	mode: 'production',
-	entry: path.join(__dirname, 'src', 'main.js'),
-	output: {
-		filename: 'bundle-[hash].js',
-		path: path.join(__dirname, 'dist')
-	},
 	module: {
 		rules: [
 			{
-				test: /\.html$/,
+				test: /\.sass$/,
 				use: [
-					{
-						loader: 'html-loader',
-						options: {minimize: true}
-					}
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+					'postcss-loader',
+					'sass-loader'
 				]
 			}
 		]
 	},
 	plugins: [
 		new webpack.ProgressPlugin(),
-		new webpack.HotModuleReplacementPlugin(),
+		new MiniCssExtractPlugin(),
 		new HtmlWebpackPlugin({
-			filename: 'index.html',
-			template: path.join(__dirname, 'src', 'index.html'),
 			minify: {
 				collapseWhitespace: true,
 				removeComments: true
 			}
 		}),
 	]
-};
+});

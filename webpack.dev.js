@@ -1,37 +1,36 @@
+const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 
-module.exports = {
-	...common,
+module.exports = merge(common, {
 	mode: 'development',
 	devtool: 'source-map',
-	entry: {
-		app: path.join(__dirname, 'src', 'main.js'),
-	},
-	output: {
-		filename: '[name].bundle.js',
-		path: path.join(__dirname, 'dist')
-	},
 	module: {
 		rules: [
 			{
-				test: /\.html$/,
+				test: /\.sass$/,
 				use: [
+					'style-loader',
 					{
-						loader: 'html-loader',
-						options: {minimize: true}
+						loader: 'css-loader',
+						options: {
+							sourceMap: true,
+						},
+					},
+					{
+						loader: 'sass-loader',
+						options: {
+							sourceMap: true,
+						}
 					}
 				]
 			}
 		]
 	},
 	plugins: [
-		new HtmlWebpackPlugin({
-			filename: 'index.html',
-			template: path.join(__dirname, 'src', 'index.html')
-		})
+		new webpack.HotModuleReplacementPlugin(),
 	],
 	devServer: {
 		open: true,
@@ -40,8 +39,8 @@ module.exports = {
 		hot: true,
 		contentBase: [
 			path.join(__dirname, 'src'),
-			path.join(__dirname, 'src', 'assets', 'templates'),
+			path.join(__dirname, 'src', 'templates'),
 		],
 		watchContentBase: true
 	}
-};
+});
