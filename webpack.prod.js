@@ -1,4 +1,5 @@
 const merge = require('webpack-merge');
+const path = require('path');
 const common = require('./webpack.common.js');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -23,10 +24,12 @@ module.exports = merge(common, {
 		new webpack.ProgressPlugin(),
 		new MiniCssExtractPlugin(),
 		new HtmlWebpackPlugin({
+			template: path.join(__dirname, 'src', 'index.html'),
 			minify: {
 				collapseWhitespace: true,
 				removeComments: true
-			}
+			},
+			favicon: path.join(__dirname, 'src', 'favicon.ico')
 		}),
 	]
 });
