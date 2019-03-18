@@ -1,4 +1,8 @@
 <header>
   <nav>Header</nav>
-  <img width="150" src="${require(`../images/default.jpg`)}" alt="image"/>
+  <picture>
+    <source media="(min-width: 650px)" srcset="${require('./images/beer_1.jpg')}">
+    <source media="(min-width: 465px)" srcset="${require('./images/beer_2.jpg')}">
+    <img src="${require('./images/beer_3.jpg'}" alt="Flowers" style="width:auto;">
+  </picture>
 </header>
