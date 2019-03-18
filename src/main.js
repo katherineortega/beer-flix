@@ -1,5 +1,4 @@
 import './styles/style.sass';
-import './images/beer_1.jpg';
 
 
 const obj1 = [1, 2, 3];
