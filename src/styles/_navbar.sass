@@ -1,2 +1,85 @@
+
+.position-absolute
+  position: absolute
+  top: 0
+  right: 0
+  left: 0
+
 header
-  background-color: green
+  background-color: lighten($black, 50%)
+  height: 65px
+  position: relative
+  overflow: hidden
+
+  picture
+    @extend .position-absolute
+    z-index: 0
+
+  nav.app-navbar
+    background-color: rgba($black, .6)
+    @extend .position-absolute
+    z-index: 2
+    bottom: 0
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: 10px
+
+    @include tablet
+      padding: 20px
+
+
+    a
+      font-size: $logo-font
+      color: $white
+
+
+    .fas
+      font-size: 2rem
+      cursor: pointer
+      color: $white
+
+
+    .filter-container
+      width: 85%
+      @include tablet
+        width: 40%
+
+
+    .filter-input
+      display: flex
+
+
+    /*states*/
+
+
+
+    &.no-search
+      .filter-container,
+      .fa-times
+        display: none
+
+      .navbar-logo,
+      .fa-search
+        display: block
+
+
+      @include desktop
+        .filter-container
+          display: block
+
+        .navbar-icon
+          display: none
+
+
+    &.search
+      .filter-container,
+      .fa-times
+        display: block
+
+      .navbar-logo,
+      .fa-search
+        display: none
+
+
+

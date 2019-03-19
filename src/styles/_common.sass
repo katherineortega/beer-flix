@@ -1,0 +1,9 @@
+img
+  max-width: 100%
+
+
+$widthArray: (25, 50, 75, 100)
+
+@each $width in $widthArray
+  .width-#{$width}
+    width: #{$width * 1%}

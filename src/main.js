@@ -1,4 +1,5 @@
 import './styles/style.sass';
+import './javascript/ui';
 
 
 const obj1 = [1, 2, 3];
