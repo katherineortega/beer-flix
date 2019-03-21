@@ -10,7 +10,7 @@
 <body>
 ${require(`html-loader?interpolate!./templates/navbar.html`)}
 <main>
-  <%=require('html-loader!./templates/beer-list.html') %>
+  ${require('html-loader!./templates/beer-list.html')}
 </main>
 
 </body>
