@@ -31,9 +31,16 @@ module.exports = merge(common, {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
+			inject: true,
+			chunks: ['beerDetail'],
+			template: path.join(__dirname, 'src', 'beer-detail.html'),
+			favicon: path.join(__dirname, 'src', 'favicon.ico'),
+		}),
+		new HtmlWebpackPlugin({
+			inject: true,
+			chunks: ['beerList'],
 			template: path.join(__dirname, 'src', 'index.html'),
 			favicon: path.join(__dirname, 'src', 'favicon.ico'),
-			filename: 'index.html'
 		}),
 		new webpack.HotModuleReplacementPlugin()
 	],

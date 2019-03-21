@@ -3,7 +3,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
 	entry: {
-		app: path.join(__dirname, 'src', 'main.js'),
+		beerList: path.join(__dirname, 'src', 'beer-list.js'),
+		beerDetail: path.join(__dirname, 'src', 'beer-detail.js')
 	},
 	output: {
 		filename: 'bundle-[hash].js',

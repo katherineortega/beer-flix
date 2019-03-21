@@ -25,11 +25,17 @@ module.exports = merge(common, {
 		new MiniCssExtractPlugin(),
 		new HtmlWebpackPlugin({
 			template: path.join(__dirname, 'src', 'index.html'),
-			minify: {
-				collapseWhitespace: true,
-				removeComments: true
-			},
+			minify: {collapseWhitespace: true, removeComments: true},
+			inject: true,
+			chunks: ['beerList'],
 			favicon: path.join(__dirname, 'src', 'favicon.ico')
 		}),
+		new HtmlWebpackPlugin({
+			inject: true,
+			chunks: ['beerDetail'],
+			minify: {collapseWhitespace: true, removeComments: true},
+			template: path.join(__dirname, 'src', 'beer-detail.html'),
+			favicon: path.join(__dirname, 'src', 'favicon.ico'),
+		})
 	]
 });

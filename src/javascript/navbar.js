@@ -1,5 +1,4 @@
 const navbar = document.getElementById('navbar');
-const navbarLogo = document.querySelector('.navbar-logo');
 const searchIcon = document.getElementById('navbar-search');
 const closeIcon = document.getElementById('navbar-close');
 

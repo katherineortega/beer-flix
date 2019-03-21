@@ -1,8 +1,29 @@
 img
   max-width: 100%
 
+.button
+  background-color: $primary-color-dark
+  color: $primary-color-text
+  border-radius: 2px
+  border: 1px solid $primary-color-dark
+  padding: 5px 10px
+  font-size: $primary-font-size
+  cursor: pointer
 
-$widthArray: (25, 50, 75, 100)
+  &:hover
+    background-color: darken($primary-color-dark, 10%)
+
+  &.outline
+    background-color: $primary-color-text
+    color: $primary-color-dark
+
+
+.input
+  width: 100%
+  border-radius: 2px
+  padding: 10px
+  border-style: none
+  font-size: $primary-font-size
 
 @each $width in $widthArray
   .width-#{$width}

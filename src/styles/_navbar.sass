@@ -15,6 +15,13 @@ header
     @extend .position-absolute
     z-index: 0
 
+  .input.search
+    border-radius: 2px 0 0 2px
+
+  .button.search
+    border-radius: 0 2px 2px 0
+
+
   nav.app-navbar
     background-color: rgba($black, .6)
     @extend .position-absolute
@@ -23,11 +30,10 @@ header
     display: flex
     justify-content: space-between
     align-items: center
-    padding: 10px
+    padding: 0 10px
 
     @include tablet
-      padding: 20px
-
+      padding: 0 20px
 
     a
       font-size: $logo-font
@@ -43,15 +49,11 @@ header
     .filter-container
       width: 85%
       @include tablet
-        width: 40%
+        width: 50%
 
 
     .filter-input
       display: flex
-
-
-    /*states*/
-
 
 
     &.no-search
