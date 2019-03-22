@@ -1,9 +1,27 @@
 @import "style"
 
 main
-  min-height: 100vh
-  margin-top: 50px
-  display: grid
-  grid-template-columns: 10% 1fr 10%
-  grid-template-rows: minmax(max-content, 50px) 1fr
-  grid-template-areas: ". filter ." ". main ."
+  min-height: calc(100vh - 65px)
+  margin: 65px auto 0
+  width: 100%
+  @include tablet
+    width: 80%
+
+  .beer-list
+    padding: 1rem
+    display: grid
+    grid-template-columns: 100%
+    grid-template-rows: minmax(max-content, 50px) 1fr
+    grid-column-gap: 15px
+    grid-row-gap: 15px
+
+    @include tablet
+      grid-template-columns: 50% 50%
+
+    @include desktop
+      grid-template-columns: 33% 34% 33%
+
+    @include largeDesktop
+      grid-template-columns: 25% 25% 25% 25%
+
+

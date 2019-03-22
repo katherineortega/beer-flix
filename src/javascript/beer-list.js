@@ -3,8 +3,14 @@ import api from './api';
 const {getBeers} = api();
 
 const templateShow = ({name, image, _id}) => `
-<p>${name}</p>
-<img src="${image}" alt="${_id}">
+<div class="card">
+  <div class="card-header">
+    <img src="${image ? image : '../images/default.png'}" alt="${_id}">
+  </div>
+  <div class="card-content">
+    <p class="card-title">${name}</p>
+  </div>
+</div>
 `;
 
 const renderShows = (element, shows) => {
