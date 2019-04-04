@@ -22,9 +22,9 @@ const renderShows = (element, shows) => {
 };
 
 
-const renderDOMBeerList = async () => {
+const renderDOMBeerList = async (query) => {
 	try {
-		const fetchBeerList = await getBeers();
+		const fetchBeerList = await getBeers(query);
 		const showBeerList = document.getElementById('beer-list');
 		renderShows(showBeerList, fetchBeerList);
 	} catch (e) {

@@ -5,6 +5,7 @@ const GET_BEERS = '/beers';
 const GET_BEER_DETAIL = '/beers/?';
 const LIKE_BEER = '/beers/?/like';
 const COMMENT_BEER = '/beers/?/comment';
+const LIMIT_RESPONSE = 10;
 
 const getHeader = () => {
 	return {
@@ -31,11 +32,18 @@ const postHeader = (body) => {
 	return obj;
 };
 
+const setQueryParams = (query) => {
+	if (query) {
+		return `?search=${query}&limit=${LIMIT_RESPONSE}`;
+	}
+	return '';
+};
+
 const api = (API_URL = 'https://web-bootcamp-exercise-beer-api-nijliozdcg.now.sh/api/v1') => {
 	return {
 		getBeers: async (query) => {
 			try {
-				const requestUrl = `${API_URL}${GET_BEERS}`;
+				const requestUrl = `${API_URL}${GET_BEERS}${setQueryParams(query)}`;
 				const response = await fetch(requestUrl, getHeader());
 				const data = await response.json();
 				return data.beers;

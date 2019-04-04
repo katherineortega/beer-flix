@@ -16,12 +16,26 @@ main
     grid-row-gap: 15px
 
     @include tablet
-      grid-template-columns: 50% 50%
+      grid-template-columns: repeat(2, calc((100% / 2) - (15px / 2)))
 
     @include desktop
-      grid-template-columns: 33% 34% 33%
+      grid-template-columns: repeat(3, calc((100% / 3) - ((15px * 2) / 3)))
 
     @include largeDesktop
-      grid-template-columns: 25% 25% 25% 25%
+      grid-template-columns: repeat(4, calc((100% / 4) - ((15px * 3) / 4)))
 
 
+  .filter-date-container
+    text-align: right
+    padding: 1rem
+
+    .input.date
+      border-radius: 4px
+      width: auto
+      border: 1px solid $accent-color
+      outline: none
+      color: $primary-text-color
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button
+        -webkit-appearance: none
