@@ -1,7 +1,13 @@
 <section class="filter-date-container">
-  <input type="month" class="input date" id="filterDate"/>
+  <form id="filter-form" class="filter-date" novalidate>
+    <label class="label date" for="inputDate">Filter by month and year</label>
+    <input type="month" class="input date" id="inputDate"/>
+    <button type="submit" class="button filter">Filter</button>
+  </form>
 </section>
 
 <section id="beer-list" class="beer-list">
-
+  <div class="display-center">
+    <img height="80" src="${require(`../images/loader.gif`)}" alt="background"/>
+  </div>
 </section>

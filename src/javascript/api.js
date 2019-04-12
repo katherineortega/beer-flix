@@ -1,4 +1,6 @@
 import replaceText from './common';
+import moment from 'moment';
+
 
 const API_KEY = 'ZQ3XMHZ-WQ44ACS-Q88AE83-Q18AXWB';
 const GET_BEERS = '/beers';
@@ -33,10 +35,21 @@ const postHeader = (body) => {
 };
 
 const setQueryParams = (query) => {
-	if (query) {
+	if (query && query.search) {
 		return `?search=${query}&limit=${LIMIT_RESPONSE}`;
 	}
 	return '';
+};
+
+const filterByDate = (data, filter) => {
+	if (filter && filter.date) {
+		const filterDate = moment(filter.date);
+		return data.beers.filter((item) => {
+			const itemDate = moment(item.firstBrewed, 'MM/YYYY');
+			return itemDate.isSameOrAfter(filterDate);
+		});
+	}
+	return data.beers;
 };
 
 const api = (API_URL = 'https://web-bootcamp-exercise-beer-api-nijliozdcg.now.sh/api/v1') => {
@@ -46,7 +59,7 @@ const api = (API_URL = 'https://web-bootcamp-exercise-beer-api-nijliozdcg.now.sh
 				const requestUrl = `${API_URL}${GET_BEERS}${setQueryParams(query)}`;
 				const response = await fetch(requestUrl, getHeader());
 				const data = await response.json();
-				return data.beers;
+				return await filterByDate(data, query);
 			} catch (e) {
 				console.error(e);
 				throw e;

@@ -26,12 +26,18 @@ main
 
 
   .filter-date-container
-    text-align: right
-    padding: 1rem
+    text-align: center
+    padding: 2rem
+
+    .label.date
+      display: inline-block
+      padding-bottom: .5rem
+      font-weight: 600
+
 
     .input.date
       border-radius: 4px
-      width: auto
+      width: 65%
       border: 1px solid $accent-color
       outline: none
       color: $primary-text-color
@@ -39,3 +45,6 @@ main
       &::-webkit-inner-spin-button,
       &::-webkit-outer-spin-button
         -webkit-appearance: none
+
+    .button.filter
+      width: 30%
