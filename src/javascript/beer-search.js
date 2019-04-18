@@ -1,8 +1,8 @@
 import renderDOMBeerList from './beer-list';
 import moment from 'moment';
+import common from './common';
 
-const searchForm = document.getElementById('search-form');
-const filterDate = document.getElementById('filter-form');
+const {searchForm, filterDate} = common;
 
 filterDate.addEventListener('submit', (event) => {
 	event.preventDefault();
@@ -31,3 +31,4 @@ const submitFilterAndSearch = () => {
 		renderDOMBeerList();
 	}
 };
+

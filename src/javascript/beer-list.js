@@ -1,6 +1,8 @@
 import api from './api';
+import common from './common';
 
 const {getBeers} = api();
+const {saveFilter} = common;
 
 const templateShow = ({name, image, _id, firstBrewed, price}) => `
 <div class="card">
@@ -24,19 +26,10 @@ const renderShows = (element, shows) => {
 	}).join('');
 };
 
-const saveFilter = (query) => {
-	if (query) {
-		localStorage.setItem('filter', JSON.stringify(query));
-		return query;
-	} else {
-		return  JSON.parse(localStorage.getItem('filter'));
-	}
-};
-
 
 const renderDOMBeerList = async (query) => {
 	try {
-		query = saveFilter();
+		query = saveFilter(query);
 		const fetchBeerList = await getBeers(query);
 		const showBeerList = document.getElementById('beer-list');
 		renderShows(showBeerList, fetchBeerList);

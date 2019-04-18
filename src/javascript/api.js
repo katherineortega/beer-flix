@@ -1,5 +1,5 @@
-import replaceText from './common';
-import moment from 'moment';
+import common from './common';
+const {replaceText, setQueryParams, filterByDate} = common;
 
 
 const API_KEY = 'ZQ3XMHZ-WQ44ACS-Q88AE83-Q18AXWB';
@@ -7,7 +7,6 @@ const GET_BEERS = '/beers';
 const GET_BEER_DETAIL = '/beers/?';
 const LIKE_BEER = '/beers/?/like';
 const COMMENT_BEER = '/beers/?/comment';
-const LIMIT_RESPONSE = 10;
 
 const getHeader = () => {
 	return {
@@ -34,23 +33,7 @@ const postHeader = (body) => {
 	return obj;
 };
 
-const setQueryParams = (query) => {
-	if (query && query.search) {
-		return `?search=${query}&limit=${LIMIT_RESPONSE}`;
-	}
-	return '';
-};
 
-const filterByDate = (data, filter) => {
-	if (filter && filter.date) {
-		const filterDate = moment(filter.date);
-		return data.beers.filter((item) => {
-			const itemDate = moment(item.firstBrewed, 'MM/YYYY');
-			return itemDate.isSameOrAfter(filterDate);
-		});
-	}
-	return data.beers;
-};
 
 const api = (API_URL = 'https://web-bootcamp-exercise-beer-api-nijliozdcg.now.sh/api/v1') => {
 	return {
